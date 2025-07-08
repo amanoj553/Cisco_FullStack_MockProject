@@ -18,7 +18,7 @@ Jenkins (CI/CD Orchestrator)
 
 | Purpose       | EC2 Type | OS           | Storage | Inbound Ports                 |
 |---------------|----------|--------------|---------|-------------------------------|
-| Jenkins       | t3.medium| Ubuntu 22.04 | 15 GB   | 8080 (Jenkins), 22 (SSH)      |
+| Jenkins       | t3.medium| Ubuntu 22.04 | 15 GB   | 8080 (Jenkins), 22 (SSH) ,8085 (Tomcat)     |
 | SonarQube     | t3.medium| Ubuntu 22.04 | 15 GB   | 9000 (SonarQube), 5432 (DB), 22 |
 
 ---
