@@ -279,7 +279,7 @@ pipeline {
   
 ![ApplicationTest](MockProject_deployment_confirm_status.JPG)
 
-![ApplicationTest](MockProject_deployment_confirm_status_1.JPG)
+![ApplicationTest](MockProject_deployment_confirmStatus_1.JPG)
 
 ## 6. Troubleshooting Tips:
 
