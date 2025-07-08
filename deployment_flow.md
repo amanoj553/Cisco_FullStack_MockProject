@@ -1,19 +1,14 @@
-# CI/CD Pipeline Documentation for JAR Deployment to EC2
+# CI/CD Pipeline Documentation for WAR Deployment to Tomcat
 
-## 1. Architecture Flow Diagram
-
-![CI/CD Architecture](Flow_diagram.JPG)
-
-GitHub (Source Code)
+GitHub (Source Code Repository)
 │
 ▼
-Jenkins (Build & Orchestrate)
-├── Maven Build
-├── SonarQube Code Analysis
-├── OWASP Dependency Check
-├── Docker Build & Push to Docker Hub
-├── Trivy Image Scan
-└── Deploy to EC2 (App Server)
+Jenkins (CI/CD Orchestrator)
+├── Pull code from GitHub (via Webhook or Poll SCM)
+├── Maven Build (Compile + Unit Test + Package WAR)
+├── SonarQube Code Analysis (Static Code Quality & Security Checks)
+├── Archive artifacts (Optional: WAR file stored in Jenkins or Nexus)
+└── Deploy WAR to Tomcat running on EC2 (App Server)
 
 ---
 
@@ -23,7 +18,6 @@ Jenkins (Build & Orchestrate)
 |---------------|----------|--------------|---------|-------------------------------|
 | Jenkins       | t3.medium| Ubuntu 22.04 | 15 GB   | 8080 (Jenkins), 22 (SSH)      |
 | SonarQube     | t3.medium| Ubuntu 22.04 | 15 GB   | 9000 (SonarQube), 5432 (DB), 22 |
-| App Server    | t3.small | Ubuntu 22.04 | 10 GB   | 8090 (App), 22 (SSH)          |
 
 ---
 
@@ -49,18 +43,11 @@ sudo apt install jenkins -y
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
 ```
-**Install Trivy:**
+**Install Tomcat:**
 ```bash
-sudo apt install wget -y
-wget https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.50.1_Linux-64bit.deb
-sudo dpkg -i trivy_0.50.1_Linux-64bit.deb
+sudo apt update
+sudo apt install tomcat9 -y
 ```
-**Install OWASP Dependency Check:**
-```bash
-wget https://github.com/jeremylong/DependencyCheck/releases/download/v8.4.0/dependency-check-8.4.0-release.zip
-unzip dependency-check-8.4.0-release.zip -d /opt/dependency-check
-```
-
 ### B. In SonarQube Server (Ubuntu 22.04)
 **Install SonarQube:**
 
@@ -198,17 +185,7 @@ Log in with username `admin` and password `admin`. In the next step, SonarQube w
 ```
 **Our SonarQube has been installed successfully.**
 
-### C. App Server
-
-**Install Docker**
-```bash
-sudo apt update
-sudo apt install docker.io -y
-sudo systemctl enable docker
-sudo systemctl start docker
-```
-
-## 4. Jenkins Configuration:
+## 3. Jenkins Configuration:
 
 ### Configure Global Tools
 - Maven: `Maven3` (point to: `/usr/share/maven`)
@@ -218,7 +195,6 @@ sudo systemctl start docker
 - Docker Pipeline
 - Pipeline
 - Pipeline view
-- OWASP Dependency-Check Plugin
 - SonarQube Scanner
 - SSH Agent
 
@@ -229,25 +205,7 @@ sudo systemctl start docker
 - Server URL: http://<SonarQube-IP>:9000
 - Token: Add via Jenkins Credentials (Secret Text)
 
-**DockerHub:**
-- Jenkins Credential ID: dockerhub-creds
-- Username & Password as secret credentials
-
-**App Server SSH:**
-- Add SSH private key to Jenkins Credentials
-- ID: ec2-ssh-key
-
-## 5. Dockerfile:
-
-```bash
-FROM openjdk:21-jdk-slim
-WORKDIR /app
-COPY target/hello-world-app-1.0.0.jar app.jar
-EXPOSE 8090
-ENTRYPOINT ["java", "-jar", "app.jar"]
-```
-
-## 6. Jenkinsfile (Declarative Pipeline):
+## 4. Jenkinsfile (Declarative Pipeline):
 
 ```bash
 pipeline {
@@ -337,7 +295,7 @@ pipeline {
 ![SonarQube Report](SonarQube_report.JPG)
 
 
-## 7. Application test:
+## 5. Application test:
 
 **After deployment, verify the application:**
 ```bash
@@ -352,14 +310,10 @@ Hello from Demo JAR App!
   
 ![ApplicationTest](deployment_confirm_status.JPG)
 
-## 8. Troubleshooting Tips:
+## 6. Troubleshooting Tips:
 
 **SonarQube not loading?**
 - Ensure `java` is version 17+ on SonarQube server
 - Verify PostgreSQL is running
 - check the sonarqube logs for more details
 - check the server menory also some times insufficient also not running
-
-**OWASP error about DB lock or permission denied?**
-- Ensure `/opt/dependency-check/data` is writable by Jenkins
-- Run dependency-check once manually as Jenkins user
