@@ -29,7 +29,7 @@
   <groupId>org.mybatis</groupId>
   <artifactId>maven-wrapper</artifactId>
   <version>6.1.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <name>JPetStore Demo 6</name>
   <url>http://www.mybatis.org</url>
