@@ -212,105 +212,74 @@ Log in with username `admin` and password `admin`. In the next step, SonarQube w
 ```bash
 pipeline {
     agent any
+
     environment {
-        SONAR_HOST_URL = 'http://34.224.169.37:9000'
-        DOCKER_HUB_REPO = 'amanoj3452/hello-world-demo'
-        DEPLOY_SERVER = 'ubuntu@3.80.124.38'
+        SONAR_HOST_URL = 'http://3.88.47.160:9000'
     }
 
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'poc-demo', 
-                    url: 'https://github.com/amanoj553/hello-world-app.git'
+                git branch: 'MockProject-demo', 
+                    url: 'https://github.com/amanoj553/Cisco_FullStack_MockProject.git'
             }
         }
-        stage('Maven Build') {
+        stage('Unit Test') {
             steps {
-                sh 'mvn clean package -DskipTests'
+                sh 'mvn test'
             }
         }
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
+                    //sh 'sonar-scanner -Dsonar.projectKey=your-key -Dsonar.sources=src -Dsonar.java.binaries=target'
+                    // sh 'sonar-scanner'
                     sh 'mvn sonar:sonar'
                 }
             }
         }
-        stage('OWASP Dependency-Check') {
+        stage('Build WAR') {
             steps {
-                sh '''
-                /opt/dependency-check/bin/dependency-check.sh \
-                  --project "DemoApp" \
-                  --scan . \
-                  --format HTML \
-                  --out dependency-report \
-                  --data /opt/dependency-check/data \
-                  --cveUrlBase https://github.com/jeremylong/CVE-Base \
-                  --cveUrlModified https://github.com/jeremylong/CVE-Modified
-                '''
+                sh 'mvn clean package -DskipTests'
             }
         }
-        stage('Docker Build & Push') {
+        stage('Deploy WAR') {
             steps {
                 script {
-                    def appImage = docker.build("${DOCKER_HUB_REPO}:latest")
-                    withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                        sh '''
-                        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-                        docker push $DOCKER_HUB_REPO:latest
-                        '''
-                    }
-                }
-            }
-        }
-        stage('Trivy Image Scan') {
-            steps {
-                sh '''
-                trivy image --exit-code 1 --severity HIGH,CRITICAL ${DOCKER_HUB_REPO}:latest || true
-                '''
-            }
-        }        
-        stage('Deploy to EC2') {
-            steps {
-                sshagent (credentials: ['ec2-ssh-key']) {
-                    script {
-                        def imageTag = "${DOCKER_HUB_REPO}:latest"
-                        sh """
-                        ssh -o StrictHostKeyChecking=no $DEPLOY_SERVER '
-                            docker pull ${imageTag} &&
-                            docker stop demoapp || true &&
-                            docker rm demoapp || true &&
-                            docker run -d --name demoapp -p 8090:8090 ${imageTag}
-                        '
-                        """
-                    }
+                    // Define source WAR file path
+                    def warFile = sh(script: "ls target/*.war", returnStdout: true).trim()
+                    
+                    // Define Tomcat webapps path (update it as per your Tomcat installation)
+                    def tomcatWebappsPath = "/var/lib/tomcat9/webapps/"
+        
+                    // Copy WAR to Tomcat's webapps directory
+                    sh "chmod 755 ${warFile}"  
+                    sh "sudo cp ${warFile} ${tomcatWebappsPath}/"
+        
+                    // Optional: Restart Tomcat if auto-deploy is not enabled
+                     sh "sudo systemctl restart tomcat9"
                 }
             }
         }
     }
 }
+
 ```
 
-![Build success status](Jenkins_build_success_status.JPG)
+![Build success status](MockProject_build_results.JPG)
 
-![SonarQube Report](SonarQube_report.JPG)
+![SonarQube Report](MockProject_SonarResults.JPG)
 
 
 ## 5. Application test:
 
-**After deployment, verify the application:**
-```bash
-curl http://<App-Server-IP>:8090/
-# Expected Output:
-Hello from Demo JAR App!
-```
 **Goto browser and check with below URL**
-- http://<IP>:8090/
-- Expected Output:
-  - `Hello from Demo JAR App!`
+- [http://<App-Server-IP>:8085/maven-wrapper/]
+
   
-![ApplicationTest](deployment_confirm_status.JPG)
+![ApplicationTest](MockProject_deployment_confirm_status.JPG)
+
+![ApplicationTest](MockProject_deployment_confirm_status_1.JPG)
 
 ## 6. Troubleshooting Tips:
 
@@ -318,4 +287,4 @@ Hello from Demo JAR App!
 - Ensure `java` is version 17+ on SonarQube server
 - Verify PostgreSQL is running
 - check the sonarqube logs for more details
-- check the server menory also some times insufficient also not running
+- check the server memory also some times insufficient also not running
