@@ -1,5 +1,6 @@
 # CI/CD Pipeline Documentation for WAR Deployment to Tomcat
 
+```bash
 GitHub (Source Code Repository)
 │
 ▼
@@ -9,6 +10,7 @@ Jenkins (CI/CD Orchestrator)
 ├── SonarQube Code Analysis (Static Code Quality & Security Checks)
 ├── Archive artifacts (Optional: WAR file stored in Jenkins or Nexus)
 └── Deploy WAR to Tomcat running on EC2 (App Server)
+```
 
 ---
 
