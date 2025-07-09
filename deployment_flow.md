@@ -1,4 +1,4 @@
-# Cisco Demo project Documentation for WAR Deployment to Tomcat
+# CI/CD Pipeline Documentation for WAR Deployment to Tomcat
 
 ```bash
 GitHub (Source Code Repository)
