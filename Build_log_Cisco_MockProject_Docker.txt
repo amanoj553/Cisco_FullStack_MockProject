@@ -1,0 +1,507 @@
+Started by user manoj
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Cisco_MockProject_Docker
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout Code)
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/Cisco_MockProject_Docker/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/amanoj553/Cisco_FullStack_MockProject.git # timeout=10
+Fetching upstream changes from https://github.com/amanoj553/Cisco_FullStack_MockProject.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+ > git fetch --tags --force --progress -- https://github.com/amanoj553/Cisco_FullStack_MockProject.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/MockProject-demo^{commit} # timeout=10
+Checking out Revision 44ef6221ca994a6be58a87617bf03e9438ae968e (refs/remotes/origin/MockProject-demo)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 44ef6221ca994a6be58a87617bf03e9438ae968e # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D MockProject-demo # timeout=10
+ > git checkout -b MockProject-demo 44ef6221ca994a6be58a87617bf03e9438ae968e # timeout=10
+Commit message: "Merge remote-tracking branch 'origin/MockProject-demo' into MockProject-demo"
+ > git rev-list --no-walk 44ef6221ca994a6be58a87617bf03e9438ae968e # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Unit Test)
+[Pipeline] sh
++ mvn test
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m---------------------< [0;36morg.mybatis:maven-wrapper[0;1m >----------------------[m
+[[1;34mINFO[m] [1mBuilding JPetStore Demo 6 6.1.1-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ war ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-enforcer-plugin:3.3.0:enforce[m [1m(enforce-java)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Adding ignore: module-info
+[[1;34mINFO[m] Rule 0: org.apache.maven.plugins.enforcer.EnforceBytecodeVersion passed
+[[1;34mINFO[m] Rule 1: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[[1;34mINFO[m] Rule 2: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[[1;34mINFO[m] Rule 3: org.apache.maven.enforcer.rules.RequirePluginVersions passed
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mgit-commit-id-maven-plugin:6.0.0:revision[m [1m(git-commit-id)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mjacoco-maven-plugin:0.8.10:prepare-agent[m [1m(prepare-agent)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] argLine set to -javaagent:/var/lib/jenkins/.m2/repository/org/jacoco/org.jacoco.agent/0.8.10/org.jacoco.agent-0.8.10-runtime.jar=destfile=/var/lib/jenkins/workspace/Cisco_MockProject_Docker/target/jacoco.exec
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mwhitespace-maven-plugin:1.3.0:trim[m [1m(default)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Processing the following extensions: css,groovy,html,java,js,json,jsp,jspx,kt,md,properties,scala,sh,wsdl,xhtml,xml,xsd,yaml,yml
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mformatter-maven-plugin:2.22.0:format[m [1m(default)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Processed 41 files in 698ms (Formatted: 0, Unchanged: 41, Failed: 0, Readonly: 0)
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mimpsort-maven-plugin:1.9.0:sort[m [1m(default)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Processed 41 files in 00:01.217 (Already Sorted: 41, Needed Sorting: 0)
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m>>> [0;32mrewrite-maven-plugin:4.46.0:run[m [1m(default)[0;1m > [0;1mcompile[m @ [36mmaven-wrapper[0;1m >>>[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-enforcer-plugin:3.3.0:enforce[m [1m(enforce-java)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Adding ignore: module-info
+[[1;34mINFO[m] Rule 0: org.apache.maven.plugins.enforcer.EnforceBytecodeVersion passed
+[[1;34mINFO[m] Rule 3: org.apache.maven.enforcer.rules.RequirePluginVersions passed
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mgit-commit-id-maven-plugin:6.0.0:revision[m [1m(git-commit-id)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mjacoco-maven-plugin:0.8.10:prepare-agent[m [1m(prepare-agent)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] argLine set to -javaagent:/var/lib/jenkins/.m2/repository/org/jacoco/org.jacoco.agent/0.8.10/org.jacoco.agent-0.8.10-runtime.jar=destfile=/var/lib/jenkins/workspace/Cisco_MockProject_Docker/target/jacoco.exec
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mwhitespace-maven-plugin:1.3.0:trim[m [1m(default)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Processing the following extensions: css,groovy,html,java,js,json,jsp,jspx,kt,md,properties,scala,sh,wsdl,xhtml,xml,xsd,yaml,yml
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mformatter-maven-plugin:2.22.0:format[m [1m(default)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Processed 41 files in 102ms (Formatted: 0, Unchanged: 41, Failed: 0, Readonly: 0)
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mimpsort-maven-plugin:1.9.0:sort[m [1m(default)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Processed 41 files in 00:00.009 (Already Sorted: 41, Needed Sorting: 0)
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mlicense-maven-plugin:4.2:format[m [1m(default)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Updating license headers...
+[[1;33mWARNING[m] Unknown file extension: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/MockProject_deployment_confirmStatus_1.JPG
+[[1;33mWARNING[m] Unknown file extension: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/MockProject_deployment_confirm_status.JPG
+[[1;33mWARNING[m] Unknown file extension: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/docker-tomcat-deploy/maven-wrapper.war
+[[1;33mWARNING[m] Unknown file extension: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/MockProject_SonarResults.JPG
+[[1;34mINFO[m] Updating license header in: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/docker-tomcat-deploy/Dockerfile
+[[1;33mWARNING[m] Unknown file extension: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/MockProject_build_results.JPG
+[[1;34mINFO[m] Updating license header in: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/sonar-project.properties
+[[1;33mWARNING[m] Unable to find a comment style definition for some files. You may want to add a custom mapping for the relevant file extensions.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:resources[m [1m(default-resources)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Copying 10 resources from src/main/resources to target/classes
+[[1;34mINFO[m] Copying 2 resources from  to target/classes/META-INF
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.11.0:compile[m [1m(default-compile)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m<<< [0;32mrewrite-maven-plugin:4.46.0:run[m [1m(default)[0;1m < [0;1mcompile[m @ [36mmaven-wrapper[0;1m <<<[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mrewrite-maven-plugin:4.46.0:run[m [1m(default)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Using active recipe(s) [org.openrewrite.java.RemoveUnusedImports]
+[[1;34mINFO[m] Using active styles(s) []
+[[1;34mINFO[m] Validating active recipes...
+[[1;34mINFO[m] Project [JPetStore Demo 6] Resolving Poms...
+[[1;34mINFO[m] Project [JPetStore Demo 6] Parsing source files
+[[1;34mINFO[m] Running recipe(s)...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mlicense-maven-plugin:4.2:format[m [1m(default)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Updating license headers...
+[[1;33mWARNING[m] Unknown file extension: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/MockProject_deployment_confirmStatus_1.JPG
+[[1;33mWARNING[m] Unknown file extension: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/MockProject_deployment_confirm_status.JPG
+[[1;33mWARNING[m] Unknown file extension: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/docker-tomcat-deploy/maven-wrapper.war
+[[1;33mWARNING[m] Unknown file extension: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/MockProject_SonarResults.JPG
+[[1;33mWARNING[m] Unknown file extension: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/MockProject_build_results.JPG
+[[1;33mWARNING[m] Unable to find a comment style definition for some files. You may want to add a custom mapping for the relevant file extensions.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:resources[m [1m(default-resources)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Copying 10 resources from src/main/resources to target/classes
+[[1;34mINFO[m] Copying 2 resources from  to target/classes/META-INF
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.11.0:compile[m [1m(default-compile)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-bundle-plugin:5.1.9:manifest[m [1m(bundle-manifest)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Writing manifest: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/target/osgi/MANIFEST.MF
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:testResources[m [1m(default-testResources)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Copying 1 resource from src/test/resources to target/test-classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.11.0:testCompile[m [1m(default-testCompile)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:3.1.0:test[m [1m(default-test)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[[1;34mINFO[m] 
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m]  T E S T S
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m] Running org.mybatis.jpetstore.web.actions.[1mAccountActionBeanTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.399 s - in org.mybatis.jpetstore.web.actions.[1mAccountActionBeanTest[m
+[[1;34mINFO[m] Running org.mybatis.jpetstore.web.actions.[1mCatalogActionBeanTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.074 s - in org.mybatis.jpetstore.web.actions.[1mCatalogActionBeanTest[m
+[[1;34mINFO[m] Running org.mybatis.jpetstore.web.actions.[1mOrderActionBeanTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 s - in org.mybatis.jpetstore.web.actions.[1mOrderActionBeanTest[m
+[[1;34mINFO[m] Running org.mybatis.jpetstore.service.[1mOrderServiceTest[m
+WARNING: A Java agent has been loaded dynamically (/var/lib/jenkins/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.6/byte-buddy-agent-1.14.6.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.121 s - in org.mybatis.jpetstore.service.[1mOrderServiceTest[m
+[[1;34mINFO[m] Running org.mybatis.jpetstore.service.[1mCatalogServiceTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.32 s - in org.mybatis.jpetstore.service.[1mCatalogServiceTest[m
+[[1;34mINFO[m] Running org.mybatis.jpetstore.service.[1mAccountServiceTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.17 s - in org.mybatis.jpetstore.service.[1mAccountServiceTest[m
+[[1;34mINFO[m] Running org.mybatis.jpetstore.mapper.[1mProductMapperTest[m
+[main] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[main] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@68e5c7ae, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@68bd8ca7, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@6744707b, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@4b28a7bf, org.springframework.test.context.support.DirtiesContextTestExecutionListener@d36c1c3, org.springframework.test.context.transaction.TransactionalTestExecutionListener@96abc76, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4d69d288, org.springframework.test.context.event.EventPublishingTestExecutionListener@437281c5]
+[main] INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory - Starting embedded database: url='jdbc:hsqldb:mem:f8ad5f24-98de-462b-8047-b37048b7007d', username='sa'
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@3aa4d595 testClass = ProductMapperTest, testInstance = org.mybatis.jpetstore.mapper.ProductMapperTest@e50e308, testMethod = getProduct@ProductMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@28ab7ffb testClass = ProductMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@3aa4d595 testClass = ProductMapperTest, testInstance = org.mybatis.jpetstore.mapper.ProductMapperTest@e50e308, testMethod = getProduct@ProductMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@28ab7ffb testClass = ProductMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@3aa4d595 testClass = ProductMapperTest, testInstance = org.mybatis.jpetstore.mapper.ProductMapperTest@2140de63, testMethod = searchProductList@ProductMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@28ab7ffb testClass = ProductMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[Amazon Parrot, Koi, Goldfish, Bulldog, Dalmation, Poodle, Golden Retriever, Labrador Retriever]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@3aa4d595 testClass = ProductMapperTest, testInstance = org.mybatis.jpetstore.mapper.ProductMapperTest@2140de63, testMethod = searchProductList@ProductMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@28ab7ffb testClass = ProductMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@3aa4d595 testClass = ProductMapperTest, testInstance = org.mybatis.jpetstore.mapper.ProductMapperTest@ab5f1d5, testMethod = getProductListByCategory@ProductMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@28ab7ffb testClass = ProductMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@3aa4d595 testClass = ProductMapperTest, testInstance = org.mybatis.jpetstore.mapper.ProductMapperTest@ab5f1d5, testMethod = getProductListByCategory@ProductMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@28ab7ffb testClass = ProductMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.128 s - in org.mybatis.jpetstore.mapper.[1mProductMapperTest[m
+[[1;34mINFO[m] Running org.mybatis.jpetstore.mapper.[1mAccountMapperTest[m
+[main] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[main] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6872201, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@669ae205, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@19984625, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@4e293c35, org.springframework.test.context.support.DirtiesContextTestExecutionListener@718198db, org.springframework.test.context.transaction.TransactionalTestExecutionListener@40bac624, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1bc80978, org.springframework.test.context.event.EventPublishingTestExecutionListener@1c8746a0]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@aec9672 testClass = AccountMapperTest, testInstance = org.mybatis.jpetstore.mapper.AccountMapperTest@1cfb59e, testMethod = updateProfile@AccountMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@77035caa testClass = AccountMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@aec9672 testClass = AccountMapperTest, testInstance = org.mybatis.jpetstore.mapper.AccountMapperTest@1cfb59e, testMethod = updateProfile@AccountMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@77035caa testClass = AccountMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@aec9672 testClass = AccountMapperTest, testInstance = org.mybatis.jpetstore.mapper.AccountMapperTest@1ca6323c, testMethod = getAccountByUsername@AccountMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@77035caa testClass = AccountMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@aec9672 testClass = AccountMapperTest, testInstance = org.mybatis.jpetstore.mapper.AccountMapperTest@1ca6323c, testMethod = getAccountByUsername@AccountMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@77035caa testClass = AccountMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@aec9672 testClass = AccountMapperTest, testInstance = org.mybatis.jpetstore.mapper.AccountMapperTest@505e8d48, testMethod = insertAccount@AccountMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@77035caa testClass = AccountMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@aec9672 testClass = AccountMapperTest, testInstance = org.mybatis.jpetstore.mapper.AccountMapperTest@505e8d48, testMethod = insertAccount@AccountMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@77035caa testClass = AccountMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@aec9672 testClass = AccountMapperTest, testInstance = org.mybatis.jpetstore.mapper.AccountMapperTest@4a7b42db, testMethod = updateSignon@AccountMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@77035caa testClass = AccountMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@aec9672 testClass = AccountMapperTest, testInstance = org.mybatis.jpetstore.mapper.AccountMapperTest@4a7b42db, testMethod = updateSignon@AccountMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@77035caa testClass = AccountMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@aec9672 testClass = AccountMapperTest, testInstance = org.mybatis.jpetstore.mapper.AccountMapperTest@4ff1f872, testMethod = insertProfile@AccountMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@77035caa testClass = AccountMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@aec9672 testClass = AccountMapperTest, testInstance = org.mybatis.jpetstore.mapper.AccountMapperTest@4ff1f872, testMethod = insertProfile@AccountMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@77035caa testClass = AccountMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@aec9672 testClass = AccountMapperTest, testInstance = org.mybatis.jpetstore.mapper.AccountMapperTest@2df05bd1, testMethod = getAccountByUsernameAndPassword@AccountMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@77035caa testClass = AccountMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@aec9672 testClass = AccountMapperTest, testInstance = org.mybatis.jpetstore.mapper.AccountMapperTest@2df05bd1, testMethod = getAccountByUsernameAndPassword@AccountMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@77035caa testClass = AccountMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@aec9672 testClass = AccountMapperTest, testInstance = org.mybatis.jpetstore.mapper.AccountMapperTest@64934acd, testMethod = insertSignon@AccountMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@77035caa testClass = AccountMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@aec9672 testClass = AccountMapperTest, testInstance = org.mybatis.jpetstore.mapper.AccountMapperTest@64934acd, testMethod = insertSignon@AccountMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@77035caa testClass = AccountMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@aec9672 testClass = AccountMapperTest, testInstance = org.mybatis.jpetstore.mapper.AccountMapperTest@6554f841, testMethod = updateAccount@AccountMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@77035caa testClass = AccountMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@aec9672 testClass = AccountMapperTest, testInstance = org.mybatis.jpetstore.mapper.AccountMapperTest@6554f841, testMethod = updateAccount@AccountMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@77035caa testClass = AccountMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.382 s - in org.mybatis.jpetstore.mapper.[1mAccountMapperTest[m
+[[1;34mINFO[m] Running org.mybatis.jpetstore.mapper.[1mItemMapperTest[m
+[main] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[main] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6c39ba30, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@f2df380, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@2c3762c7, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@6cd0f9a4, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4d992634, org.springframework.test.context.transaction.TransactionalTestExecutionListener@2d487df4, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3a7e13c0, org.springframework.test.context.event.EventPublishingTestExecutionListener@5188c0f2]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@665fb1d8 testClass = ItemMapperTest, testInstance = org.mybatis.jpetstore.mapper.ItemMapperTest@142ac60e, testMethod = updateInventoryQuantity@ItemMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@43376a03 testClass = ItemMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@665fb1d8 testClass = ItemMapperTest, testInstance = org.mybatis.jpetstore.mapper.ItemMapperTest@142ac60e, testMethod = updateInventoryQuantity@ItemMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@43376a03 testClass = ItemMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@665fb1d8 testClass = ItemMapperTest, testInstance = org.mybatis.jpetstore.mapper.ItemMapperTest@3c5095df, testMethod = getInventoryQuantity@ItemMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@43376a03 testClass = ItemMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@665fb1d8 testClass = ItemMapperTest, testInstance = org.mybatis.jpetstore.mapper.ItemMapperTest@3c5095df, testMethod = getInventoryQuantity@ItemMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@43376a03 testClass = ItemMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@665fb1d8 testClass = ItemMapperTest, testInstance = org.mybatis.jpetstore.mapper.ItemMapperTest@6a73b74c, testMethod = getItem@ItemMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@43376a03 testClass = ItemMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@665fb1d8 testClass = ItemMapperTest, testInstance = org.mybatis.jpetstore.mapper.ItemMapperTest@6a73b74c, testMethod = getItem@ItemMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@43376a03 testClass = ItemMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@665fb1d8 testClass = ItemMapperTest, testInstance = org.mybatis.jpetstore.mapper.ItemMapperTest@3ef97efc, testMethod = getItemListByProduct@ItemMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@43376a03 testClass = ItemMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@665fb1d8 testClass = ItemMapperTest, testInstance = org.mybatis.jpetstore.mapper.ItemMapperTest@3ef97efc, testMethod = getItemListByProduct@ItemMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@43376a03 testClass = ItemMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.158 s - in org.mybatis.jpetstore.mapper.[1mItemMapperTest[m
+[[1;34mINFO[m] Running org.mybatis.jpetstore.mapper.[1mSequenceMapperTest[m
+[main] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[main] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4a3d4cd2, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6f66ab8f, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@2746b1cc, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@6bcf2780, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4bb4adf7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@11544ddd, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@38e46ea, org.springframework.test.context.event.EventPublishingTestExecutionListener@116f823c]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@508863eb testClass = SequenceMapperTest, testInstance = org.mybatis.jpetstore.mapper.SequenceMapperTest@7d8802cf, testMethod = updateSequence@SequenceMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@2f7af3d0 testClass = SequenceMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@508863eb testClass = SequenceMapperTest, testInstance = org.mybatis.jpetstore.mapper.SequenceMapperTest@7d8802cf, testMethod = updateSequence@SequenceMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@2f7af3d0 testClass = SequenceMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@508863eb testClass = SequenceMapperTest, testInstance = org.mybatis.jpetstore.mapper.SequenceMapperTest@6d66a248, testMethod = getSequence@SequenceMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@2f7af3d0 testClass = SequenceMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@508863eb testClass = SequenceMapperTest, testInstance = org.mybatis.jpetstore.mapper.SequenceMapperTest@6d66a248, testMethod = getSequence@SequenceMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@2f7af3d0 testClass = SequenceMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.067 s - in org.mybatis.jpetstore.mapper.[1mSequenceMapperTest[m
+[[1;34mINFO[m] Running org.mybatis.jpetstore.mapper.[1mLineItemMapperTest[m
+[main] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[main] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@e8c381e, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@38499139, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@240a9052, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@2ca93dee, org.springframework.test.context.support.DirtiesContextTestExecutionListener@430abcad, org.springframework.test.context.transaction.TransactionalTestExecutionListener@373e3dac, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4746b319, org.springframework.test.context.event.EventPublishingTestExecutionListener@2265a052]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@fcdeb50 testClass = LineItemMapperTest, testInstance = org.mybatis.jpetstore.mapper.LineItemMapperTest@5f7a2a79, testMethod = getLineItemsByOrderId@LineItemMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@65f1bf2c testClass = LineItemMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@fcdeb50 testClass = LineItemMapperTest, testInstance = org.mybatis.jpetstore.mapper.LineItemMapperTest@5f7a2a79, testMethod = getLineItemsByOrderId@LineItemMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@65f1bf2c testClass = LineItemMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@fcdeb50 testClass = LineItemMapperTest, testInstance = org.mybatis.jpetstore.mapper.LineItemMapperTest@45e6f47a, testMethod = insertLineItem@LineItemMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@65f1bf2c testClass = LineItemMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@fcdeb50 testClass = LineItemMapperTest, testInstance = org.mybatis.jpetstore.mapper.LineItemMapperTest@45e6f47a, testMethod = insertLineItem@LineItemMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@65f1bf2c testClass = LineItemMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.044 s - in org.mybatis.jpetstore.mapper.[1mLineItemMapperTest[m
+[[1;34mINFO[m] Running org.mybatis.jpetstore.mapper.[1mOrderMapperTest[m
+[main] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[main] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7fbe0f64, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@d0971cd, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@53b42a0d, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@cf6a6eb, org.springframework.test.context.support.DirtiesContextTestExecutionListener@33c5d3e, org.springframework.test.context.transaction.TransactionalTestExecutionListener@45fdd38d, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@376b6d7d, org.springframework.test.context.event.EventPublishingTestExecutionListener@e934485]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@3c22a99a testClass = OrderMapperTest, testInstance = org.mybatis.jpetstore.mapper.OrderMapperTest@6abdead7, testMethod = insertOrderStatus@OrderMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@412b90cc testClass = OrderMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@3c22a99a testClass = OrderMapperTest, testInstance = org.mybatis.jpetstore.mapper.OrderMapperTest@6abdead7, testMethod = insertOrderStatus@OrderMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@412b90cc testClass = OrderMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@3c22a99a testClass = OrderMapperTest, testInstance = org.mybatis.jpetstore.mapper.OrderMapperTest@532b3244, testMethod = insertOrder@OrderMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@412b90cc testClass = OrderMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@3c22a99a testClass = OrderMapperTest, testInstance = org.mybatis.jpetstore.mapper.OrderMapperTest@532b3244, testMethod = insertOrder@OrderMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@412b90cc testClass = OrderMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@3c22a99a testClass = OrderMapperTest, testInstance = org.mybatis.jpetstore.mapper.OrderMapperTest@579b1d86, testMethod = getOrdersByUsername@OrderMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@412b90cc testClass = OrderMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@3c22a99a testClass = OrderMapperTest, testInstance = org.mybatis.jpetstore.mapper.OrderMapperTest@579b1d86, testMethod = getOrdersByUsername@OrderMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@412b90cc testClass = OrderMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@3c22a99a testClass = OrderMapperTest, testInstance = org.mybatis.jpetstore.mapper.OrderMapperTest@18a66406, testMethod = getOrder@OrderMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@412b90cc testClass = OrderMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@3c22a99a testClass = OrderMapperTest, testInstance = org.mybatis.jpetstore.mapper.OrderMapperTest@18a66406, testMethod = getOrder@OrderMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@412b90cc testClass = OrderMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.124 s - in org.mybatis.jpetstore.mapper.[1mOrderMapperTest[m
+[[1;34mINFO[m] Running org.mybatis.jpetstore.mapper.[1mCategoryMapperTest[m
+[main] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[main] INFO org.springframework.test.context.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@72187492, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3ba55a6b, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@5b20024b, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@2f8ede54, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1e0383d3, org.springframework.test.context.transaction.TransactionalTestExecutionListener@f64f47a, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@548d9d87, org.springframework.test.context.event.EventPublishingTestExecutionListener@da8853c]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@1f81b020 testClass = CategoryMapperTest, testInstance = org.mybatis.jpetstore.mapper.CategoryMapperTest@56c95789, testMethod = getCategoryList@CategoryMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@65dff28b testClass = CategoryMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@1f81b020 testClass = CategoryMapperTest, testInstance = org.mybatis.jpetstore.mapper.CategoryMapperTest@56c95789, testMethod = getCategoryList@CategoryMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@65dff28b testClass = CategoryMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Began transaction (1) for test context [DefaultTestContext@1f81b020 testClass = CategoryMapperTest, testInstance = org.mybatis.jpetstore.mapper.CategoryMapperTest@7906de2f, testMethod = getCategory@CategoryMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@65dff28b testClass = CategoryMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.jdbc.datasource.DataSourceTransactionManager@47a05ad8]; rollback [true]
+[main] INFO org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@1f81b020 testClass = CategoryMapperTest, testInstance = org.mybatis.jpetstore.mapper.CategoryMapperTest@7906de2f, testMethod = getCategory@CategoryMapperTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@65dff28b testClass = CategoryMapperTest, locations = '{}', classes = '{class org.mybatis.jpetstore.mapper.MapperTestContext}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.046 s - in org.mybatis.jpetstore.mapper.[1mCategoryMapperTest[m
+[[1;34mINFO[m] Running org.mybatis.jpetstore.domain.[1mOrderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 s - in org.mybatis.jpetstore.domain.[1mOrderTest[m
+[[1;34mINFO[m] Running org.mybatis.jpetstore.domain.[1mCartTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.039 s - in org.mybatis.jpetstore.domain.[1mCartTest[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1;32mTests run: 74, Failures: 0, Errors: 0, Skipped: 0[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  44.789 s
+[[1;34mINFO[m] Finished at: 2025-07-20T03:05:01Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build WAR)
+[Pipeline] sh
++ mvn clean package -DskipTests
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m---------------------< [0;36morg.mybatis:maven-wrapper[0;1m >----------------------[m
+[[1;34mINFO[m] [1mBuilding JPetStore Demo 6 6.1.1-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ war ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-clean-plugin:3.2.0:clean[m [1m(default-clean)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Deleting /var/lib/jenkins/workspace/Cisco_MockProject_Docker/target
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-enforcer-plugin:3.3.0:enforce[m [1m(enforce-java)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Adding ignore: module-info
+[[1;34mINFO[m] Rule 0: org.apache.maven.plugins.enforcer.EnforceBytecodeVersion passed
+[[1;34mINFO[m] Rule 1: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[[1;34mINFO[m] Rule 2: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[[1;34mINFO[m] Rule 3: org.apache.maven.enforcer.rules.RequirePluginVersions passed
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mgit-commit-id-maven-plugin:6.0.0:revision[m [1m(git-commit-id)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mjacoco-maven-plugin:0.8.10:prepare-agent[m [1m(prepare-agent)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] argLine set to -javaagent:/var/lib/jenkins/.m2/repository/org/jacoco/org.jacoco.agent/0.8.10/org.jacoco.agent-0.8.10-runtime.jar=destfile=/var/lib/jenkins/workspace/Cisco_MockProject_Docker/target/jacoco.exec
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mwhitespace-maven-plugin:1.3.0:trim[m [1m(default)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Processing the following extensions: css,groovy,html,java,js,json,jsp,jspx,kt,md,properties,scala,sh,wsdl,xhtml,xml,xsd,yaml,yml
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mformatter-maven-plugin:2.22.0:format[m [1m(default)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Processed 41 files in 2s355ms (Formatted: 0, Unchanged: 41, Failed: 0, Readonly: 0)
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mimpsort-maven-plugin:1.9.0:sort[m [1m(default)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Processed 41 files in 00:01.108 (Already Sorted: 41, Needed Sorting: 0)
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m>>> [0;32mrewrite-maven-plugin:4.46.0:run[m [1m(default)[0;1m > [0;1mcompile[m @ [36mmaven-wrapper[0;1m >>>[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-enforcer-plugin:3.3.0:enforce[m [1m(enforce-java)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Adding ignore: module-info
+[[1;34mINFO[m] Rule 0: org.apache.maven.plugins.enforcer.EnforceBytecodeVersion passed
+[[1;34mINFO[m] Rule 3: org.apache.maven.enforcer.rules.RequirePluginVersions passed
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mgit-commit-id-maven-plugin:6.0.0:revision[m [1m(git-commit-id)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mjacoco-maven-plugin:0.8.10:prepare-agent[m [1m(prepare-agent)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] argLine set to -javaagent:/var/lib/jenkins/.m2/repository/org/jacoco/org.jacoco.agent/0.8.10/org.jacoco.agent-0.8.10-runtime.jar=destfile=/var/lib/jenkins/workspace/Cisco_MockProject_Docker/target/jacoco.exec
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mwhitespace-maven-plugin:1.3.0:trim[m [1m(default)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Processing the following extensions: css,groovy,html,java,js,json,jsp,jspx,kt,md,properties,scala,sh,wsdl,xhtml,xml,xsd,yaml,yml
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mformatter-maven-plugin:2.22.0:format[m [1m(default)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Processed 41 files in 91ms (Formatted: 0, Unchanged: 41, Failed: 0, Readonly: 0)
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mimpsort-maven-plugin:1.9.0:sort[m [1m(default)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Processed 41 files in 00:00.010 (Already Sorted: 41, Needed Sorting: 0)
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mlicense-maven-plugin:4.2:format[m [1m(default)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Updating license headers...
+[[1;33mWARNING[m] Unknown file extension: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/MockProject_deployment_confirmStatus_1.JPG
+[[1;33mWARNING[m] Unknown file extension: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/MockProject_deployment_confirm_status.JPG
+[[1;33mWARNING[m] Unknown file extension: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/docker-tomcat-deploy/maven-wrapper.war
+[[1;33mWARNING[m] Unknown file extension: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/MockProject_SonarResults.JPG
+[[1;33mWARNING[m] Unknown file extension: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/MockProject_build_results.JPG
+[[1;33mWARNING[m] Unable to find a comment style definition for some files. You may want to add a custom mapping for the relevant file extensions.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:resources[m [1m(default-resources)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Copying 10 resources from src/main/resources to target/classes
+[[1;34mINFO[m] Copying 2 resources from  to target/classes/META-INF
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.11.0:compile[m [1m(default-compile)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Compiling 24 source files with javac [debug release 8] to target/classes
+[[1;33mWARNING[m] source value 8 is obsolete and will be removed in a future release
+[[1;33mWARNING[m] target value 8 is obsolete and will be removed in a future release
+[[1;33mWARNING[m] To suppress warnings about obsolete options, use -Xlint:-options.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m<<< [0;32mrewrite-maven-plugin:4.46.0:run[m [1m(default)[0;1m < [0;1mcompile[m @ [36mmaven-wrapper[0;1m <<<[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mrewrite-maven-plugin:4.46.0:run[m [1m(default)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Using active recipe(s) [org.openrewrite.java.RemoveUnusedImports]
+[[1;34mINFO[m] Using active styles(s) []
+[[1;34mINFO[m] Validating active recipes...
+[[1;34mINFO[m] Project [JPetStore Demo 6] Resolving Poms...
+[[1;34mINFO[m] Project [JPetStore Demo 6] Parsing source files
+[[1;34mINFO[m] Running recipe(s)...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mlicense-maven-plugin:4.2:format[m [1m(default)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Updating license headers...
+[[1;33mWARNING[m] Unknown file extension: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/MockProject_deployment_confirmStatus_1.JPG
+[[1;33mWARNING[m] Unknown file extension: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/MockProject_deployment_confirm_status.JPG
+[[1;33mWARNING[m] Unknown file extension: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/docker-tomcat-deploy/maven-wrapper.war
+[[1;33mWARNING[m] Unknown file extension: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/MockProject_SonarResults.JPG
+[[1;33mWARNING[m] Unknown file extension: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/MockProject_build_results.JPG
+[[1;33mWARNING[m] Unable to find a comment style definition for some files. You may want to add a custom mapping for the relevant file extensions.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:resources[m [1m(default-resources)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Copying 10 resources from src/main/resources to target/classes
+[[1;34mINFO[m] Copying 2 resources from  to target/classes/META-INF
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.11.0:compile[m [1m(default-compile)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-bundle-plugin:5.1.9:manifest[m [1m(bundle-manifest)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] No MANIFEST.MF file found, generating manifest.
+[[1;34mINFO[m] Writing manifest: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/target/osgi/MANIFEST.MF
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:testResources[m [1m(default-testResources)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Copying 1 resource from src/test/resources to target/test-classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.11.0:testCompile[m [1m(default-testCompile)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Compiling 17 source files with javac [debug release 11] to target/test-classes
+[[1;34mINFO[m] /var/lib/jenkins/workspace/Cisco_MockProject_Docker/src/test/java/org/mybatis/jpetstore/domain/OrderTest.java: Some input files use or override a deprecated API.
+[[1;34mINFO[m] /var/lib/jenkins/workspace/Cisco_MockProject_Docker/src/test/java/org/mybatis/jpetstore/domain/OrderTest.java: Recompile with -Xlint:deprecation for details.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:3.1.0:test[m [1m(default-test)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Tests are skipped.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-war-plugin:3.4.0:war[m [1m(default-war)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Packaging webapp
+[[1;34mINFO[m] Assembling webapp [maven-wrapper] in [/var/lib/jenkins/workspace/Cisco_MockProject_Docker/target/maven-wrapper]
+[[1;34mINFO[m] Processing war project
+[[1;34mINFO[m] Copying webapp resources [/var/lib/jenkins/workspace/Cisco_MockProject_Docker/src/main/webapp]
+[[1;34mINFO[m] Building war: /var/lib/jenkins/workspace/Cisco_MockProject_Docker/target/maven-wrapper.war
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-site-plugin:3.12.1:attach-descriptor[m [1m(attach-descriptor)[m @ [36mmaven-wrapper[0;1m ---[m
+[[1;34mINFO[m] Skipping because packaging 'war' is not pom.
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  40.696 s
+[[1;34mINFO[m] Finished at: 2025-07-20T03:05:44Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Prepare Docker Build Directory)
+[Pipeline] sh
++ mkdir -p docker-tomcat-deploy
++ cp target/maven-wrapper.war docker-tomcat-deploy/maven-wrapper.war
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Docker Image)
+[Pipeline] sh
++ cd docker-tomcat-deploy
++ docker build -t amanoj3452/hello-world-demo:CiscoDemoProject .
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  10.28MB
+Step 1/4 : FROM tomcat:9.0-jdk11
+ ---> faad675c3717
+Step 2/4 : RUN rm -rf /usr/local/tomcat/webapps/*
+ ---> Running in d9d8f2915c93
+ ---> Removed intermediate container d9d8f2915c93
+ ---> c305a91f58a3
+Step 3/4 : COPY maven-wrapper.war /usr/local/tomcat/webapps/ROOT.war
+ ---> 7eca319157b6
+Step 4/4 : EXPOSE 8080
+ ---> Running in 1aaf863e6998
+ ---> Removed intermediate container 1aaf863e6998
+ ---> dfd62dc8f55d
+Successfully built dfd62dc8f55d
+Successfully tagged amanoj3452/hello-world-demo:CiscoDemoProject
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Push to Docker Hub)
+[Pipeline] withCredentials
+Masking supported pattern matches of $DOCKER_PASS
+[Pipeline] {
+[Pipeline] sh
++ echo ****
++ docker login -u amanoj3452 --password-stdin
+WARNING! Your password will be stored unencrypted in /var/lib/jenkins/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credential-stores
+
+Login Succeeded
++ docker push amanoj3452/hello-world-demo:CiscoDemoProject
+The push refers to repository [docker.io/amanoj3452/hello-world-demo]
+aedeb31f1efe: Preparing
+5f70bf18a086: Preparing
+862e9e849363: Preparing
+5f70bf18a086: Preparing
+bed8c22f48ef: Preparing
+4a50b9caf2cf: Preparing
+b78b186d37d7: Preparing
+94bf25522f13: Preparing
+65b3f50ed6d7: Preparing
+107cbdaeec04: Preparing
+b78b186d37d7: Waiting
+94bf25522f13: Waiting
+65b3f50ed6d7: Waiting
+107cbdaeec04: Waiting
+4a50b9caf2cf: Layer already exists
+bed8c22f48ef: Layer already exists
+5f70bf18a086: Layer already exists
+862e9e849363: Layer already exists
+b78b186d37d7: Layer already exists
+94bf25522f13: Layer already exists
+107cbdaeec04: Layer already exists
+65b3f50ed6d7: Layer already exists
+aedeb31f1efe: Pushed
+CiscoDemoProject: digest: sha256:e054fb750b3321aea40976ed5aa7867a37b05ce162a4652c89a54b062da0cc03 size: 2413
++ docker logout
+Removing login credentials for https://index.docker.io/v1/
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Pull from Docker Hub & Deploy the War)
+[Pipeline] sh
++ docker rm -f jpetstore-container
+jpetstore-container
++ docker rmi amanoj3452/hello-world-demo:CiscoDemoProject
+Untagged: amanoj3452/hello-world-demo:CiscoDemoProject
+Untagged: amanoj3452/hello-world-demo@sha256:e054fb750b3321aea40976ed5aa7867a37b05ce162a4652c89a54b062da0cc03
+Deleted: sha256:dfd62dc8f55d4ca6023999f582ae9a408d60c28327f69e3d553f46ff6164c367
+Deleted: sha256:7eca319157b66e6b65ec94143c7a46883517303186e7e6d6f0984eb4d3dcfcc3
+Deleted: sha256:c38e4de18cefeee7fac07de063b913552720434d0dcaffd04bea2fa5832c327a
+Deleted: sha256:c305a91f58a316778fc16b87e967d44821a8a7e1ff5589f26a3a6a485bb89237
++ docker pull amanoj3452/hello-world-demo:CiscoDemoProject
+CiscoDemoProject: Pulling from amanoj3452/hello-world-demo
+32f112e3802c: Already exists
+e24cfefee0bd: Already exists
+1d7c2c071b0a: Already exists
+0f02b04f2467: Already exists
+c38c26a54474: Already exists
+5c8808e88141: Already exists
+4f4fb700ef54: Already exists
+ec5a50b58794: Already exists
+4f4fb700ef54: Already exists
+e8b7aaecb738: Pulling fs layer
+e8b7aaecb738: Verifying Checksum
+e8b7aaecb738: Download complete
+e8b7aaecb738: Pull complete
+Digest: sha256:e054fb750b3321aea40976ed5aa7867a37b05ce162a4652c89a54b062da0cc03
+Status: Downloaded newer image for amanoj3452/hello-world-demo:CiscoDemoProject
+docker.io/amanoj3452/hello-world-demo:CiscoDemoProject
++ docker run -d -p 8086:8080 --name jpetstore-container amanoj3452/hello-world-demo:CiscoDemoProject
+98bac77002987c2d98714d97c91e014050d8a6103d8811ffe88f004e520f1a87
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
