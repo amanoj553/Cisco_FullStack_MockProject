@@ -364,13 +364,21 @@ pipeline {
     }
 }
 ```
+## 5. Application test:
+
+**Goto browser and check with below URL**
+- [http://<App-Server-IP>:8085/maven-wrapper/]
+
+  
 ### Build Success screenshots for Tomcat deployment (Declarative Pipeline):
+
 
 ![Build success status](MockProject_build_results.JPG)
 
 ![SonarQube Report](MockProject_SonarResults.JPG)
 
 ### Build Success screenshots for Docker container deployment (Declarative Pipeline):
+
 
 ![Build success status](Cisco_MockProject_Docker.JPG)
 
@@ -379,16 +387,6 @@ pipeline {
 ![Build success status](Cisco_MockProject_Docker_2.JPG)
 
 ![Build success status](Cisco_MockProject_Docker_3.JPG)
-
-## 5. Application test:
-
-**Goto browser and check with below URL**
-- [http://<App-Server-IP>:8085/maven-wrapper/]
-
-  
-![ApplicationTest](MockProject_deployment_confirm_status.JPG)
-
-![ApplicationTest](MockProject_deployment_confirmStatus_1.JPG)
 
 ## 6. Troubleshooting Tips:
 
