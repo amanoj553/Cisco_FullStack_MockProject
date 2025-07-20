@@ -9,7 +9,7 @@ Jenkins (CI/CD Orchestrator)
 ├── Maven Build (Compile + Unit Test + Package WAR)
 ├── SonarQube Code Analysis (Static Code Quality & Security Checks)
 ├── Archive artifacts (Optional: WAR file stored in Jenkins or Nexus)
-└── Deploy WAR to Tomcat running on EC2 (App Server)
+└── Deploy WAR to Tomcat running on EC2 (App Server) and deployed as a Docker container
 ```
 
 ---
@@ -18,7 +18,7 @@ Jenkins (CI/CD Orchestrator)
 
 | Purpose       | EC2 Type | OS           | Storage | Inbound Ports                 |
 |---------------|----------|--------------|---------|-------------------------------|
-| Jenkins       | t3.medium| Ubuntu 22.04 | 15 GB   | 8080 (Jenkins), 22 (SSH) ,8085 (Tomcat)     |
+| Jenkins       | t3.medium| Ubuntu 22.04 | 15 GB   | 8080 (Jenkins), 22 (SSH) ,8085 (Tomcat),8086 (application port)     |
 | SonarQube     | t3.medium| Ubuntu 22.04 | 15 GB   | 9000 (SonarQube), 5432 (DB), 22 |
 
 ---
@@ -273,7 +273,7 @@ pipeline {
     agent any
 
     environment {
-        SONAR_HOST_URL = 'http://3.88.47.160:9000'
+        //SONAR_HOST_URL = 'http://3.88.47.160:9000'
         DOCKER_DIR = "docker-tomcat-deploy"
         WAR_NAME = "maven-wrapper.war"
         IMAGE_TAG = "CiscoDemoProject"
