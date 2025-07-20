@@ -292,6 +292,22 @@ deployment.apps/jpetstore-deployment   1/1     1            1           45m
 NAME                                             DESIRED   CURRENT   READY   AGE
 replicaset.apps/jpetstore-deployment-f499c48fb   1         1         1       45m
 ```
+## Jenkins Build Logs:
+
+### Jenkins Build and Deployment Log – Successful WAR Deployment to minikube cluster:
+
+[View Log File for Docker Container Deployment](Build_log_Cisco_MockProject_Minikube.txt)
+  
+### Build Success Screenshots – WAR Deployment to Tomcat
+
+
+![Build success status](Cisco_MockProject_Minikube_1.JPG)
+
+![Build success status](Cisco_MockProject_Minikube_2.JPG)
+
+![ApplicationTest](Cisco_MockProject_Minikube_3.JPG)
+
+![ApplicationTest](Cisco_MockProject_Minikube_4.JPG)
 
 ## Accessing the Application
 
