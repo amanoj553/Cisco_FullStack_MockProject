@@ -364,20 +364,30 @@ pipeline {
     }
 }
 ```
-## 5. Application test:
+## 5. Jenkins Build Logs:
+
+### Jenkins Build and Deployment Log – Successful WAR Deployment to Tomcat Server:
+
+[View Log File for Tomcat Deployment](Build_log_Cisco_MockProject.txt)
+
+### Jenkins Build and Deployment Log – Successful WAR Deployment to Docker container:
+
+[View Log File for Docker Container Deployment](Build_log_Cisco_MockProject.txt_Docker)
+
+## 5.1 Application test:
 
 **Goto browser and check with below URL**
 - [http://<App-Server-IP>:8085/maven-wrapper/]
 
   
-### Build Success screenshots for Tomcat deployment (Declarative Pipeline):
+### Build Success Screenshots – WAR Deployment to Tomcat
 
 
 ![Build success status](MockProject_build_results.JPG)
 
 ![SonarQube Report](MockProject_SonarResults.JPG)
 
-### Build Success screenshots for Docker container deployment (Declarative Pipeline):
+### Build Success Screenshots – WAR Deployment to Docker container
 
 
 ![Build success status](Cisco_MockProject_Docker.JPG)
