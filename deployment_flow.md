@@ -372,7 +372,7 @@ pipeline {
 
 ### Jenkins Build and Deployment Log – Successful WAR Deployment to Docker container:
 
-[View Log File for Docker Container Deployment](Build_log_Cisco_MockProject.txt_Docker)
+[View Log File for Docker Container Deployment](Build_log_Cisco_MockProject_Docker.txt)
 
 ## 5.1 Application test:
 
