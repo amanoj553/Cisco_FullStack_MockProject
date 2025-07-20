@@ -387,6 +387,10 @@ pipeline {
 
 ![SonarQube Report](MockProject_SonarResults.JPG)
 
+![ApplicationTest](MockProject_deployment_confirm_status.JPG)
+
+![ApplicationTest](MockProject_deployment_confirmStatus_1.JPG)
+
 ### Build Success Screenshots – WAR Deployment to Docker container
 
 
