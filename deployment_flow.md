@@ -364,11 +364,21 @@ pipeline {
     }
 }
 ```
+### Build Success screenshots for Tomcat deployment (Declarative Pipeline):
 
 ![Build success status](MockProject_build_results.JPG)
 
 ![SonarQube Report](MockProject_SonarResults.JPG)
 
+### Build Success screenshots for Docker container deployment (Declarative Pipeline):
+
+![Build success status](Cisco_MockProject_Docker.JPG)
+
+![Build success status](Cisco_MockProject_Docker_1.JPG)
+
+![Build success status](Cisco_MockProject_Docker_2.JPG)
+
+![Build success status](Cisco_MockProject_Docker_3.JPG)
 
 ## 5. Application test:
 
