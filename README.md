@@ -1,4 +1,4 @@
-# Cisco Demo project Documentation for WAR Deployment to Tomcat
+# CI/CD Pipeline Documentation for WAR Deployment to Tomcat and through Docker container
 
 ```bash
 GitHub (Source Code Repository)
@@ -9,7 +9,7 @@ Jenkins (CI/CD Orchestrator)
 ├── Maven Build (Compile + Unit Test + Package WAR)
 ├── SonarQube Code Analysis (Static Code Quality & Security Checks)
 ├── Archive artifacts (Optional: WAR file stored in Jenkins or Nexus)
-└── Deploy WAR to Tomcat running on EC2 (App Server)
+└── Deploy WAR to Tomcat running on EC2 (App Server) and deployed as a Docker container
 ```
 
 ---
@@ -18,7 +18,7 @@ Jenkins (CI/CD Orchestrator)
 
 | Purpose       | EC2 Type | OS           | Storage | Inbound Ports                 |
 |---------------|----------|--------------|---------|-------------------------------|
-| Jenkins       | t3.medium| Ubuntu 22.04 | 15 GB   | 8080 (Jenkins), 22 (SSH) ,8085 (Tomcat)     |
+| Jenkins       | t3.medium| Ubuntu 22.04 | 15 GB   | 8080 (Jenkins), 22 (SSH) ,8085 (Tomcat),8086 (application port)     |
 | SonarQube     | t3.medium| Ubuntu 22.04 | 15 GB   | 9000 (SonarQube), 5432 (DB), 22 |
 
 ---
@@ -207,7 +207,7 @@ Log in with username `admin` and password `admin`. In the next step, SonarQube w
 - Server URL: http://<SonarQube-IP>:9000
 - Token: Add via Jenkins Credentials (Secret Text)
 
-## 4. Jenkinsfile (Declarative Pipeline):
+## 4. Jenkinsfile for Tomcat deployment (Declarative Pipeline):
 
 ```bash
 pipeline {
@@ -266,20 +266,137 @@ pipeline {
 
 ```
 
-![Build success status](MockProject_build_results.JPG)
+## 4.1 Jenkinsfile for Docker container deployment (Declarative Pipeline):
 
-![SonarQube Report](MockProject_SonarResults.JPG)
+```bash
+pipeline {
+    agent any
 
+    environment {
+        //SONAR_HOST_URL = 'http://3.88.47.160:9000'
+        DOCKER_DIR = "docker-tomcat-deploy"
+        WAR_NAME = "maven-wrapper.war"
+        IMAGE_TAG = "CiscoDemoProject"
+        IMAGE_NAME = "amanoj3452/hello-world-demo"
+    }
 
-## 5. Application test:
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git branch: 'MockProject-demo', 
+                    url: 'https://github.com/amanoj553/Cisco_FullStack_MockProject.git'
+            }
+        }
+        stage('Unit Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        // stage('SonarQube Analysis') {
+        //     steps {
+        //         withSonarQubeEnv('SonarQube') {
+        //             //sh 'sonar-scanner -Dsonar.projectKey=your-key -Dsonar.sources=src -Dsonar.java.binaries=target'
+        //             // sh 'sonar-scanner'
+        //             sh 'mvn sonar:sonar'
+        //         }
+        //     }
+        // }
+        stage('Build WAR') {
+            steps {
+                sh 'mvn clean package -DskipTests'
+            }
+        }
+        stage('Prepare Docker Build Directory') {
+            steps {
+                sh '''
+                mkdir -p $DOCKER_DIR
+                cp target/$WAR_NAME $DOCKER_DIR/$WAR_NAME
+                '''
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                sh '''
+                cd $DOCKER_DIR
+                docker build -t $IMAGE_NAME:$IMAGE_TAG .
+                '''
+            }
+        }
+        stage('Push to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    sh '''
+                    echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                    docker push $IMAGE_NAME:$IMAGE_TAG
+                    docker logout
+                    '''
+                }
+            }
+        }
+        stage('Pull from Docker Hub & Deploy the War') {
+            steps {
+                sh '''
+                docker rm -f jpetstore-container || true
+                docker rmi $IMAGE_NAME:$IMAGE_TAG || true
+                docker pull $IMAGE_NAME:$IMAGE_TAG
+                docker run -d -p 8086:8080 --name jpetstore-container $IMAGE_NAME:$IMAGE_TAG
+                '''
+            }
+        }
+        // stage('Deploy WAR') {
+        //     steps {
+        //         script {
+        //             // Define source WAR file path
+        //             def warFile = sh(script: "ls target/*.war", returnStdout: true).trim()
+                    
+        //             // Define Tomcat webapps path (update it as per your Tomcat installation)
+        //             def tomcatWebappsPath = "/var/lib/tomcat9/webapps/"
+        
+        //             // Copy WAR to Tomcat's webapps directory
+        //             sh "chmod 755 ${warFile}"  
+        //             sh "sudo cp ${warFile} ${tomcatWebappsPath}/"
+        
+        //             // Optional: Restart Tomcat if auto-deploy is not enabled
+        //              sh "sudo systemctl restart tomcat9"
+        //         }
+        //     }
+        // }
+    }
+}
+```
+## 5. Jenkins Build Logs:
+
+### Jenkins Build and Deployment Log – Successful WAR Deployment to Tomcat Server:
+
+[View Log File for Tomcat Deployment](Build_log_Cisco_MockProject.txt)
+
+### Jenkins Build and Deployment Log – Successful WAR Deployment to Docker container:
+
+[View Log File for Docker Container Deployment](Build_log_Cisco_MockProject_Docker.txt)
+
+## 5.1 Application test:
 
 **Goto browser and check with below URL**
 - [http://<App-Server-IP>:8085/maven-wrapper/]
 
   
-![ApplicationTest](MockProject_deployment_confirm_status.JPG)
+### Build Success Screenshots – WAR Deployment to Tomcat
 
-![ApplicationTest](MockProject_deployment_confirmStatus_1.JPG)
+
+![Build success status](MockProject_build_results.JPG)
+
+![SonarQube Report](MockProject_SonarResults.JPG)
+
+### Build Success Screenshots – WAR Deployment to Docker container
+
+
+![Build success status](Cisco_MockProject_Docker.JPG)
+
+![Build success status](Cisco_MockProject_Docker_1.JPG)
+
+![Build success status](Cisco_MockProject_Docker_2.JPG)
+
+![Build success status](Cisco_MockProject_Docker_3.JPG)
 
 ## 6. Troubleshooting Tips:
 
