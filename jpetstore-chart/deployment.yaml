@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jpetstore-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: JpetStore
+  template:
+    metadata:
+      labels:
+        app: JpetStore
+    spec:
+      containers:
+      - name: jpetstore-container
+        image: amanoj3452/hello-world-demo:CiscoDemoProject
+        ports:
+        - containerPort: 8080
+
