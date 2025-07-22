@@ -93,6 +93,9 @@ affinity: {}
 
 replicaCount: 1
 
+applicationProperties:
+  app: jpetstore
+
 image:
   repository: amanoj3452/hello-world-demo
   tag: jpetstore
