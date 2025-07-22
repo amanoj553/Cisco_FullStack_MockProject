@@ -48,6 +48,7 @@ Selector labels
 {{- define "jpetstore-chart.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "jpetstore-chart.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/app: {{ .Values.applicationProperties.app | quote}}
 {{- end }}
 
 {{/*
