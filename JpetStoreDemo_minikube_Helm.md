@@ -26,7 +26,7 @@ This documentation describes how to build, containerize, and deploy a Java WAR a
 │ │ ├── service.yaml
 │ │ └── _helpers.tpl
 │ └── values.yaml
-├── Jenkinsfile
+├── Dockerfile
 └── other source code and resources...
 ```
 
@@ -477,11 +477,11 @@ spec:
 
 ## Jenkins Build Logs:
 
-### Jenkins Build and Deployment Log – Successful WAR Deployment to minikube cluster:
+### Jenkins Build and Deployment Log – Successful WAR Deployment to minikube cluster using Helm charts:
 
 [View Log File for Docker Container Deployment](Build_log_Cisco_MockProject_Minikube_Helm.txt)
   
-### Build Success Screenshots – WAR Deployment to Tomcat
+### Build Success Screenshots – WAR Deployment to Minikube using Helm charts
 
 
 ![Build success status](Cisco_MockProject_Minikube_Helm.JPG)
@@ -568,12 +568,11 @@ Now visit: http://<Public-IP>:30036 in your browser
 - If you use this line in your Deployment YAML:
   ```bash
  serviceAccountName: {{ include "jpetstore-chart.serviceAccountName" . }}
-  
+  ```
 - And you don't define a service account in your chart, it fails.
+
 **Fix**:
 - Remove or comment the line above in templates/deployment.yaml.
-```
----
 
 ## 🛠️ Helm Troubleshooting Commands Reference
 
