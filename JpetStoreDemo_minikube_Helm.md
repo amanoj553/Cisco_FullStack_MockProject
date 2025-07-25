@@ -565,14 +565,15 @@ Now visit: http://<Public-IP>:30036 in your browser
   ```
 ### 5. ❌ ServiceAccountName Not Found Error
 
-- If you use this line in your Deployment YAML:
-  ```bash
- serviceAccountName: {{ include "jpetstore-chart.serviceAccountName" . }}
+- If you include the following line in your `Deployment.yaml`:
+  ```yaml
+  serviceAccountName: {{ include "jpetstore-chart.serviceAccountName" . }}
   ```
-- And you don't define a service account in your chart, it fails.
+- And you do not define a corresponding ServiceAccount in your Helm chart, the deployment will fail with an error.
 
 **Fix**:
-- Remove or comment the line above in templates/deployment.yaml.
+- Either define the ServiceAccount in your Helm chart under templates/serviceaccount.yaml, or
+- Simply remove or comment out the above line from templates/deployment.yaml if a ServiceAccount is not required.
 
 ## 🛠️ Helm Troubleshooting Commands Reference
 
