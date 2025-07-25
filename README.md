@@ -207,26 +207,6 @@ pipeline {
                 }
             }
         }
-        // stage('Deploy via Helm') {
-        //     steps {
-        //         script {
-        //             // Set Helm release and chart directory
-        //             def chartName = "jpetstore"
-        //             def chartDir = "./jpetstore-chart" // adjust path if different
-        //             sh "helm upgrade --install ${RELEASE_NAME} ${CHART_DIR} \
-        //               --set image.repository=amanoj3452/hello-world-demo \
-        //               --set image.tag=jpetstore-helm \
-        //               --set service.nodePort=30034 --debug"
-        //             // sh """
-        //             // helm upgrade --install jpetstore ./jpetstore-chart \
-        //             //   --set image.repository=amanoj3452/hello-world-demo \
-        //             //   --set image.tag=jpetstore-helm \
-        //             //   --set service.nodePort=30034
-        //             // """
-        //         }
-        //     }
-        // }
-
         stage('Helm Upgrade/Install') {
           steps {
             sh '''
@@ -237,7 +217,6 @@ pipeline {
             '''
           }
         }
-
         // stage('Update K8s Manifest') {
         //     steps {
         //         // Substitute image name in deployment.yaml using sed
@@ -264,17 +243,6 @@ pipeline {
                 '''
             }
         }
-        // stage('Access App') {
-        //     steps {
-        //         sh '''
-        //         echo "Waiting for deployment to be available..."
-        //         kubectl rollout status deployment/jpetstore-deployment --timeout=30s
-        //         minikube service jpetstore-service --url
-        //         echo "Forwarding port..."
-        //         nohup kubectl port-forward --address 0.0.0.0 service/jpetstore-service 30036:8080 > jpetstore-portforward.log 2>&1 &
-        //         '''           
-        //     }
-        // }
         // stage('Pull from Docker Hub & Deploy the War') {
         //     steps {
         //         sh '''
